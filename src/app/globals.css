@@ -1,26 +1,125 @@
 @import "tailwindcss";
 
+@theme {
+  --font-pixel: var(--font-pixel), "Courier New", monospace;
+  --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+
+  --color-retro-dark: #07080c;
+  --color-retro-panel: #0d0f17;
+  --color-retro-surface: #141724;
+  --color-retro-border: #262b40;
+  --color-retro-accent: #10b981;
+  --color-retro-cyan: #06b6d4;
+  --color-retro-violet: #8b5cf6;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --bg-dark: #07080c;
+  --panel-bg: #0d0f17;
+  --accent: #10b981;
+  --accent-rgb: 16, 185, 129;
+  --accent-cyan: #06b6d4;
+  --accent-violet: #8b5cf6;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-dark);
+  color: #f3f4f6;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* 8-bit Pixel Typography helper */
+.font-pixel {
+  font-family: var(--font-pixel), monospace;
+  letter-spacing: -0.02em;
+}
+
+/* 8-bit Retro Borders & Shadows */
+.pixel-border {
+  border: 2px solid #282f45;
+  box-shadow: 
+    3px 3px 0px 0px #000000,
+    inset 1px 1px 0px 0px rgba(255, 255, 255, 0.08);
+}
+
+.pixel-border-accent {
+  border: 2px solid #10b981;
+  box-shadow: 
+    3px 3px 0px 0px #047857,
+    0 0 16px rgba(16, 185, 129, 0.2);
+}
+
+.pixel-border-cyan {
+  border: 2px solid #06b6d4;
+  box-shadow: 
+    3px 3px 0px 0px #0891b2,
+    0 0 16px rgba(6, 182, 212, 0.2);
+}
+
+.pixel-button-shadow {
+  box-shadow: 3px 3px 0px 0px #000000;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.pixel-button-shadow:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px 0px #000000;
+}
+
+.pixel-button-shadow:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px 0px #000000;
+}
+
+/* Retro CRT scanlines (subtle, non-intrusive) */
+.scanlines {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.02),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.02)
+  );
+  background-size: 100% 4px, 6px 100%;
+  pointer-events: none;
+}
+
+/* Terminal window dots */
+.terminal-dot {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090a0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e2436;
+  border: 1px solid #2b334d;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #10b981;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
