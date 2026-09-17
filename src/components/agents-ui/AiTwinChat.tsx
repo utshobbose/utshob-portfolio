@@ -25,13 +25,23 @@ export function AiTwinChat() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const transcriptRef = useRef<HTMLDivElement>(null);
+  const isFirstRender = useRef(true);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (transcriptRef.current) {
+      transcriptRef.current.scrollTo({
+        top: transcriptRef.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
   };
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     scrollToBottom();
   }, [messages, isLoading]);
 
@@ -167,7 +177,10 @@ export function AiTwinChat() {
       {!isMinimized && (
         <>
           {/* Transcript Area (LiveKit AgentChatTranscript Style) */}
-          <div className="p-4 space-y-4 max-h-[340px] min-h-[220px] overflow-y-auto font-sans text-sm">
+          <div
+            ref={transcriptRef}
+            className="p-4 space-y-4 max-h-[340px] min-h-[220px] overflow-y-auto font-sans text-sm"
+          >
             {messages.map((msg) => {
               const isAssistant = msg.role === "assistant";
               return (
@@ -231,7 +244,6 @@ export function AiTwinChat() {
               </div>
             )}
 
-            <div ref={messagesEndRef} />
           </div>
 
           {/* Preset Prompts Row */}
