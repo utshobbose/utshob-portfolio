@@ -130,14 +130,14 @@ export function DebugChallenge({ className = "" }: DebugChallengeProps) {
       className={`w-full max-w-xl rounded-2xl bg-[#090d16]/95 border border-[#1b253b] backdrop-blur-md shadow-[0_12px_45px_rgba(0,0,0,0.85),0_0_20px_rgba(6,182,212,0.06)] text-zinc-200 transition-all flex flex-col overflow-hidden ${className}`}
     >
       {/* 1. Terminal Window Header Bar */}
-      <div className="bg-[#0c1220]/90 px-4 py-2.5 border-b border-[#1b253b] flex items-center justify-between gap-3 select-none">
+      <div className="bg-[#0c1220]/90 px-3 sm:px-4 py-2 sm:py-2.5 border-b border-[#1b253b] flex items-center justify-between gap-3 select-none">
         <div className="flex items-center gap-2">
-          <span className="w-3 h-3 rounded-full bg-[#ef4444] inline-block shadow-[0_0_8px_rgba(239,68,68,0.5)]" />
-          <span className="w-3 h-3 rounded-full bg-[#f59e0b] inline-block shadow-[0_0_8px_rgba(245,158,11,0.5)]" />
-          <span className="w-3 h-3 rounded-full bg-[#10b981] inline-block shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+          <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-[#ef4444] inline-block shadow-[0_0_8px_rgba(239,68,68,0.5)]" />
+          <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-[#f59e0b] inline-block shadow-[0_0_8px_rgba(245,158,11,0.5)]" />
+          <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-[#10b981] inline-block shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
         </div>
 
-        <span className="font-mono text-xs text-zinc-400 tracking-wider">
+        <span className="font-mono text-[11px] sm:text-xs text-zinc-400 tracking-wider">
           RECRUITER_CHALLENGE.exe
         </span>
 
@@ -157,18 +157,18 @@ export function DebugChallenge({ className = "" }: DebugChallengeProps) {
       </div>
 
       {/* 2. Challenge Body */}
-      <div className="p-4 sm:p-5 space-y-4">
+      <div className="p-3 sm:p-5 space-y-3 sm:space-y-4">
         {/* Top Header with Space Invader */}
         <div className="flex items-start justify-between gap-3">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3">
             <div className="text-emerald-400 drop-shadow-[0_0_10px_rgba(16,185,129,0.5)] shrink-0">
-              <SpaceInvaderIcon className="w-7 h-7 sm:w-8 sm:h-8" />
+              <SpaceInvaderIcon className="w-6 h-6 sm:w-8 sm:h-8" />
             </div>
             <div>
-              <h3 className="text-base sm:text-lg font-bold font-mono tracking-tight text-white flex items-center gap-2">
+              <h3 className="text-sm sm:text-lg font-bold font-mono tracking-tight text-white flex items-center gap-2">
                 <span>DEBUG THE BUILD</span>
               </h3>
-              <p className="text-xs text-zinc-400 font-mono">
+              <p className="text-[11px] sm:text-xs text-zinc-400 font-mono">
                 A quick challenge for sharp minds
               </p>
             </div>
@@ -181,69 +181,72 @@ export function DebugChallenge({ className = "" }: DebugChallengeProps) {
         </div>
 
         {/* Incident Alert Box */}
-        <div className="bg-[#140b10] border border-rose-900/60 rounded-xl p-3 flex items-center gap-3 shadow-[inset_0_1px_4px_rgba(0,0,0,0.5)]">
-          <div className="p-1.5 bg-rose-950/80 border border-rose-600/60 rounded-lg text-rose-400 shrink-0">
-            <AlertTriangle className="w-4 h-4 text-rose-400 animate-pulse" />
+        <div className="bg-[#140b10] border border-rose-900/60 rounded-xl p-2.5 sm:p-3 flex items-center gap-2.5 sm:gap-3 shadow-[inset_0_1px_4px_rgba(0,0,0,0.5)]">
+          <div className="p-1 sm:p-1.5 bg-rose-950/80 border border-rose-600/60 rounded-lg text-rose-400 shrink-0">
+            <AlertTriangle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-rose-400 animate-pulse" />
           </div>
           <div className="min-w-0">
             <div className="text-xs sm:text-sm font-semibold text-rose-400">
               Production Build Failed
             </div>
-            <div className="text-xs font-mono text-rose-200/90 truncate">
+            <div className="text-[11px] sm:text-xs font-mono text-rose-200/90 truncate">
               Error: DATABASE_URL undefined
             </div>
           </div>
         </div>
 
         {/* 3. Stage 1: What would you do? */}
-        <div className="space-y-2">
+        <div className="space-y-1.5 sm:space-y-2">
           <div className="text-xs font-mono text-zinc-300 font-medium">
             What would you do?
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
             <button
               type="button"
               onClick={() => handleStage1("logs")}
-              className={`px-3 py-2 rounded-lg font-mono text-xs border transition-all flex items-center justify-center gap-2 cursor-pointer ${
+              className={`px-1.5 py-1.5 sm:px-3 sm:py-2 rounded-lg font-mono text-[10px] sm:text-xs border transition-all flex items-center justify-center gap-1 sm:gap-2 cursor-pointer ${
                 stage1Choice === "logs"
                   ? "bg-emerald-950/40 border-emerald-500 text-emerald-300 shadow-[0_0_10px_rgba(16,185,129,0.2)]"
                   : "bg-[#0f1422] hover:bg-[#161e33] border-[#222c44] text-zinc-300 hover:border-zinc-600"
               }`}
             >
-              <FileText className="w-3.5 h-3.5 text-zinc-400" />
-              <span>Inspect Logs</span>
+              <FileText className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-zinc-400 shrink-0" />
+              <span className="sm:hidden">Logs</span>
+              <span className="hidden sm:inline">Inspect Logs</span>
             </button>
 
             <button
               type="button"
               onClick={() => handleStage1("restart")}
-              className={`px-3 py-2 rounded-lg font-mono text-xs border transition-all flex items-center justify-center gap-2 cursor-pointer ${
+              className={`px-1.5 py-1.5 sm:px-3 sm:py-2 rounded-lg font-mono text-[10px] sm:text-xs border transition-all flex items-center justify-center gap-1 sm:gap-2 cursor-pointer ${
                 stage1Choice === "restart"
                   ? "bg-amber-950/40 border-amber-500 text-amber-300"
                   : "bg-[#0f1422] hover:bg-[#161e33] border-[#222c44] text-zinc-300 hover:border-zinc-600"
               }`}
             >
-              <RefreshCw className="w-3.5 h-3.5 text-zinc-400" />
-              <span>Restart Server</span>
+              <RefreshCw className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-zinc-400 shrink-0" />
+              <span className="sm:hidden">Restart</span>
+              <span className="hidden sm:inline">Restart Server</span>
             </button>
 
             <button
               type="button"
               onClick={() => handleStage1("dns")}
-              className={`px-3 py-2 rounded-lg font-mono text-xs border transition-all flex items-center justify-center gap-2 cursor-pointer ${
+              className={`px-1.5 py-1.5 sm:px-3 sm:py-2 rounded-lg font-mono text-[10px] sm:text-xs border transition-all flex items-center justify-center gap-1 sm:gap-2 cursor-pointer ${
                 stage1Choice === "dns"
                   ? "bg-amber-950/40 border-amber-500 text-amber-300"
                   : "bg-[#0f1422] hover:bg-[#161e33] border-[#222c44] text-zinc-300 hover:border-zinc-600"
               }`}
             >
-              <Globe className="w-3.5 h-3.5 text-zinc-400" />
-              <span>Blame DNS</span>
+              <Globe className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-zinc-400 shrink-0" />
+              <span className="sm:hidden">DNS</span>
+              <span className="hidden sm:inline">Blame DNS</span>
             </button>
           </div>
 
           {/* Stage 1 Feedback */}
           {stage1Feedback && (
-            <div className="p-2 rounded-lg bg-amber-950/30 border border-amber-800/60 text-xs font-mono text-amber-300">
+            <div className="p-2 rounded-lg bg-amber-950/30 border border-amber-800/60 text-[11px] sm:text-xs font-mono text-amber-300">
               {stage1Feedback}
             </div>
           )}
@@ -253,67 +256,70 @@ export function DebugChallenge({ className = "" }: DebugChallengeProps) {
         {step >= 2 && (
           <div className="space-y-2.5 animate-fade-in pt-1">
             {/* Log Terminal Box */}
-            <div className="bg-[#06080e] border border-[#182033] rounded-lg p-3 font-mono text-xs space-y-1">
-              <div className="text-[11px] text-zinc-400 font-semibold tracking-wide border-b border-[#141b2b] pb-1 mb-1">
+            <div className="bg-[#06080e] border border-[#182033] rounded-lg p-2.5 sm:p-3 font-mono text-xs space-y-1">
+              <div className="text-[10px] sm:text-[11px] text-zinc-400 font-semibold tracking-wide border-b border-[#141b2b] pb-1 mb-1">
                 LOG OUTPUT
               </div>
-              <div className="text-zinc-400">
+              <div className="text-zinc-400 text-[11px] sm:text-xs">
                 <span className="text-cyan-400 font-semibold">[INFO]</span> ENVIRONMENT: production
               </div>
-              <div className="text-rose-400 font-medium">
+              <div className="text-rose-400 font-medium text-[11px] sm:text-xs">
                 <span className="text-rose-500 font-semibold">[ERROR]</span> DATABASE_URL = undefined
               </div>
-              <div className="text-rose-400 font-medium">
+              <div className="text-rose-400 font-medium text-[11px] sm:text-xs">
                 <span className="text-rose-500 font-semibold">[ERROR]</span> STATUS: Build blocked
               </div>
             </div>
 
             {/* Choose the fix */}
-            <div className="space-y-2">
+            <div className="space-y-1.5 sm:space-y-2">
               <div className="text-xs font-mono text-zinc-300 font-medium">
                 Choose the fix:
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
                 <button
                   type="button"
                   onClick={() => handleStage2("env")}
                   disabled={step > 2}
-                  className={`px-3 py-2 rounded-lg font-mono text-xs border transition-all flex items-center justify-center gap-2 cursor-pointer disabled:cursor-default ${
+                  className={`px-1.5 py-1.5 sm:px-3 sm:py-2 rounded-lg font-mono text-[10px] sm:text-xs border transition-all flex items-center justify-center gap-1 sm:gap-2 cursor-pointer disabled:cursor-default ${
                     stage2Choice === "env" || step > 2
                       ? "bg-emerald-950/50 border-emerald-400 text-emerald-300 shadow-[0_0_12px_rgba(16,185,129,0.3)] ring-1 ring-emerald-500/50"
                       : "bg-[#0f1422] hover:bg-[#161e33] border-[#222c44] text-zinc-300 hover:border-emerald-600/60"
                   }`}
                 >
-                  <Terminal className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Configure ENV</span>
+                  <Terminal className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald-400 shrink-0" />
+                  <span className="sm:hidden">Fix ENV</span>
+                  <span className="hidden sm:inline">Configure ENV</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => handleStage2("delete")}
                   disabled={step > 2}
-                  className={`px-3 py-2 rounded-lg font-mono text-xs border transition-all flex items-center justify-center gap-2 cursor-pointer disabled:cursor-default ${
+                  className={`px-1.5 py-1.5 sm:px-3 sm:py-2 rounded-lg font-mono text-[10px] sm:text-xs border transition-all flex items-center justify-center gap-1 sm:gap-2 cursor-pointer disabled:cursor-default ${
                     stage2Choice === "delete"
                       ? "bg-rose-950/40 border-rose-500 text-rose-300"
                       : "bg-[#0f1422] hover:bg-[#161e33] border-[#222c44] text-zinc-300 hover:border-rose-600/60"
                   }`}
                 >
-                  <Trash2 className="w-3.5 h-3.5 text-zinc-400" />
-                  <span>Delete Database</span>
+                  <Trash2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-zinc-400 shrink-0" />
+                  <span className="sm:hidden">Drop DB</span>
+                  <span className="hidden sm:inline">Delete Database</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => handleStage2("npm")}
                   disabled={step > 2}
-                  className={`px-3 py-2 rounded-lg font-mono text-xs border transition-all flex items-center justify-center gap-2 cursor-pointer disabled:cursor-default ${
+                  className={`px-1.5 py-1.5 sm:px-3 sm:py-2 rounded-lg font-mono text-[10px] sm:text-xs border transition-all flex items-center justify-center gap-1 sm:gap-2 cursor-pointer disabled:cursor-default ${
                     stage2Choice === "npm"
                       ? "bg-amber-950/40 border-amber-500 text-amber-300"
                       : "bg-[#0f1422] hover:bg-[#161e33] border-[#222c44] text-zinc-300 hover:border-amber-600/60"
                   }`}
                 >
-                  <Package className="w-3.5 h-3.5 text-zinc-400" />
-                  <span>npm install again</span>
+                  <Package className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-zinc-400 shrink-0" />
+                  <span className="sm:hidden">npm i</span>
+                  <span className="hidden sm:inline">npm install</span>
                 </button>
               </div>
 

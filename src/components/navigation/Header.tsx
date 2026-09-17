@@ -72,7 +72,7 @@ export function Header() {
               priority
             />
           </div>
-          <div className="hidden sm:flex flex-col">
+          <div className="hidden md:flex flex-col">
             <span className="font-pixel text-[11px] text-zinc-100 group-hover:text-emerald-400 transition-colors">
               {profile.name}
             </span>
@@ -83,8 +83,8 @@ export function Header() {
           </div>
         </button>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-1 bg-[#0d101a]/80 p-1 border-2 border-[#20273c] shadow-[2px_2px_0px_0px_#000]">
+        {/* Desktop Navigation (visible on lg+ screens) */}
+        <nav className="hidden lg:flex items-center gap-1 bg-[#0d101a]/80 p-1 border-2 border-[#20273c] shadow-[2px_2px_0px_0px_#000]">
           {NAV_ITEMS.map((item) => {
             const isActive = activeSection === item.id;
             return (
@@ -103,8 +103,8 @@ export function Header() {
           })}
         </nav>
 
-        {/* Action Button: Resume */}
-        <div className="hidden md:flex items-center gap-3">
+        {/* Action Button: Resume (visible on lg+ screens) */}
+        <div className="hidden lg:flex items-center gap-3">
           <RetroButton
             href={profile.resumeUrl}
             target="_blank"
@@ -117,25 +117,26 @@ export function Header() {
           </RetroButton>
         </div>
 
-        {/* Mobile menu hamburger */}
-        <div className="flex items-center gap-2 md:hidden">
+        {/* Mobile & Tablet menu hamburger (< lg screens) */}
+        <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden">
           <RetroButton
             href={profile.resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
             variant="outline"
             size="sm"
-            className="px-2 py-1 text-[9px]"
+            className="px-2 py-1 text-[9px] flex items-center gap-1"
           >
-            Resume ↓
+            <FileDown className="w-3 h-3" />
+            <span>Resume</span>
           </RetroButton>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 bg-[#121624] border-2 border-[#242c44] text-zinc-300 hover:text-white"
+            className="p-1.5 sm:p-2 bg-[#121624] border-2 border-[#242c44] text-zinc-300 hover:text-white cursor-pointer"
             aria-label="Toggle Menu"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="w-4 h-4 sm:w-5 sm:h-5" /> : <Menu className="w-4 h-4 sm:w-5 sm:h-5" />}
           </button>
         </div>
       </div>
