@@ -1,18 +1,18 @@
 "use client";
 
 import React from "react";
-import dynamic from "next/dynamic";
+import Image from "next/image";
 import { profile } from "@/content/profile";
-import { RetroBadge } from "@/components/8bit/RetroBadge";
-import { RetroButton } from "@/components/8bit/RetroButton";
 import { DebugChallenge } from "@/components/debug-challenge/DebugChallenge";
-import { ArrowDown, Code2, Sparkles, FileDown } from "lucide-react";
-
-// Dynamically import ShaderBackground client-side only (never blocks first paint)
-const ShaderBackground = dynamic(
-  () => import("@/components/canvas/ShaderBackground"),
-  { ssr: false }
-);
+import {
+  FolderCode,
+  FileText,
+  Download,
+  ArrowRight,
+  ArrowDown,
+  Atom,
+  Database,
+} from "lucide-react";
 
 export function Hero() {
   const scrollTo = (id: string) => {
@@ -25,116 +25,166 @@ export function Hero() {
   return (
     <section
       id="about"
-      className="relative min-h-screen flex items-center justify-center pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-between pt-24 pb-6 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
-      {/* Dynamic Ambient WebGL Mesh Gradient Background */}
-      <ShaderBackground />
+      {/* 3rd Image: Cyberpunk Pixel Art Lofi Workspace Background */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+        <Image
+          src="/hero-bg.jpg"
+          alt="Utshob Bose Pixel Art Cyberpunk Workspace"
+          fill
+          priority
+          quality={92}
+          className="object-cover object-center"
+        />
+        {/* Cinematic subtle tint and edge vignette so pixel art is clearly visible and vibrant */}
+        <div className="absolute inset-0 bg-[#07080c]/35" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#07080c] via-transparent to-[#07080c]/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#07080c]/70 via-transparent to-[#07080c]/45" />
+        {/* Subtle CRT scanlines */}
+        <div className="absolute inset-0 scanlines opacity-15 pointer-events-none" />
+      </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col items-center">
-        {/* Main Grid: Responsive split on xl+ screens, stacked on mobile/tablet */}
-        <div className="w-full grid grid-cols-1 xl:grid-cols-12 gap-8 lg:gap-10 items-center justify-items-center">
-          {/* Existing Hero Content */}
-          <div className="xl:col-span-7 w-full max-w-2xl mx-auto text-center flex flex-col items-center space-y-7">
-            {/* Retro Badge: > whoami */}
-            <div className="animate-fade-in">
-              <RetroBadge variant="emerald" size="md" dot>
-                {profile.badge}
-              </RetroBadge>
+      {/* Main Content Grid */}
+      <div className="relative z-10 max-w-7xl mx-auto w-full my-auto py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 xl:gap-12 items-center">
+          {/* Left Column: Profile & Info */}
+          <div className="lg:col-span-6 xl:col-span-6 text-left space-y-5">
+            {/* > whoami with blinking cursor */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#0b1319]/90 border border-emerald-500/40 text-emerald-400 font-mono text-xs shadow-[0_0_12px_rgba(16,185,129,0.15)]">
+              <span>&gt; whoami</span>
+              <span className="w-1.5 h-3.5 bg-emerald-400 inline-block animate-pulse" />
             </div>
 
-            {/* Utshob Bose: Large, Clean, Modern Sans-Serif */}
-            <div className="space-y-3">
-              <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white font-sans">
+            {/* Utshob Bose Heading */}
+            <div className="space-y-2">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white font-sans">
                 {profile.name}
               </h1>
 
-              {/* Role line */}
-              <p className="font-mono text-sm sm:text-base md:text-lg text-emerald-400 font-medium tracking-wide flex items-center justify-center gap-2 flex-wrap">
-                <span className="text-emerald-300">Full-Stack Developer</span>
+              {/* Role Line */}
+              <p className="font-mono text-xs sm:text-sm md:text-base text-zinc-300 font-medium tracking-wide flex items-center gap-2 flex-wrap">
+                <span className="text-zinc-200">Full-Stack Developer</span>
                 <span className="text-zinc-600">·</span>
-                <span className="text-cyan-300">CS Graduate</span>
+                <span className="text-emerald-400">CS Graduate</span>
                 <span className="text-zinc-600">·</span>
-                <span className="text-violet-300">AI Enthusiast</span>
+                <span className="text-cyan-400">AI Enthusiast</span>
+              </p>
+
+              {/* Education Subline */}
+              <p className="font-mono text-xs text-zinc-400">
+                system.profile // BRAC University &apos;26
               </p>
             </div>
 
-            {/* Terminal Info Snippet Card */}
-            <div className="bg-[#0b0e18]/85 border-2 border-[#20273c] p-4 sm:p-5 text-left max-w-2xl w-full shadow-[4px_4px_0px_0px_#000000] backdrop-blur-sm">
-              <div className="flex items-center justify-between border-b border-[#1b2132] pb-2 mb-3">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-emerald-400 inline-block shadow-[0_0_6px_#10b981]" />
-                  <span className="font-pixel text-[10px] text-zinc-300">
-                    system.profile // BRAC University &apos;26
-                  </span>
-                </div>
-                <span className="font-mono text-[11px] text-zinc-500">Dhaka, BD</span>
-              </div>
+            {/* Short Bio */}
+            <p className="text-sm sm:text-base text-zinc-300 font-sans leading-relaxed max-w-lg">
+              Building scalable applications, production-ready systems, and interactive digital experiences.
+            </p>
 
-              <p className="text-zinc-300 text-sm sm:text-base font-sans leading-relaxed">
-                {profile.summary}
-              </p>
-
-              <div className="mt-4 pt-3 border-t border-[#181e2e] flex flex-wrap items-center gap-2 text-xs font-mono text-zinc-400">
-                <span className="text-emerald-400 font-pixel text-[9px] uppercase">Current:</span>
-                <span className="text-zinc-200">Program Associate (ICT) @ BIID</span>
-                <span className="text-zinc-600">|</span>
-                <span className="text-zinc-200">Tech Co-Founder @ Science Simulab</span>
-              </div>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-              <RetroButton
+            {/* Action Buttons */}
+            <div className="flex flex-wrap items-center gap-3 pt-1">
+              <button
                 onClick={() => scrollTo("projects")}
-                variant="primary"
-                size="md"
+                className="bg-emerald-400 hover:bg-emerald-300 text-zinc-950 font-bold font-sans text-xs sm:text-sm px-5 py-2.5 rounded-lg flex items-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all cursor-pointer"
               >
-                <Code2 className="w-3.5 h-3.5" />
+                <FolderCode className="w-4 h-4" />
                 <span>View Projects</span>
-              </RetroButton>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
 
-              <RetroButton
-                onClick={() => scrollTo("contact")}
-                variant="cyan"
-                size="md"
-              >
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Get In Touch</span>
-              </RetroButton>
-
-              <RetroButton
+              <a
                 href={profile.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                variant="outline"
-                size="md"
+                className="bg-[#0c1017]/80 hover:bg-[#151c28] border border-zinc-700/80 hover:border-zinc-500 text-zinc-200 text-xs sm:text-sm font-medium px-5 py-2.5 rounded-lg flex items-center gap-2 transition-all"
               >
-                <FileDown className="w-3.5 h-3.5" />
-                <span>Resume PDF</span>
-              </RetroButton>
+                <FileText className="w-4 h-4 text-zinc-400" />
+                <span>Resume</span>
+                <Download className="w-3.5 h-3.5 text-zinc-400" />
+              </a>
+            </div>
+
+            {/* Availability Status Pill */}
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0a111a]/85 border border-emerald-900/60 text-xs font-mono text-zinc-300">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#10b981] animate-pulse" />
+                <span>Available for remote &amp; hybrid roles</span>
+              </div>
+            </div>
+
+            {/* Tech Stack Strip */}
+            <div className="space-y-2 pt-2">
+              <span className="font-mono text-[11px] text-zinc-500 uppercase tracking-wider block">
+                {"// TECH STACK"}
+              </span>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="bg-[#0e131d]/90 border border-[#20293d] px-2.5 py-1 rounded-lg text-xs font-mono text-zinc-300 flex items-center gap-1.5">
+                  <span className="w-3.5 h-3.5 bg-zinc-800 border border-zinc-700 rounded-full flex items-center justify-center text-[9px] font-bold text-white">
+                    N
+                  </span>
+                  <span>Next.js</span>
+                </span>
+                <span className="bg-[#0e131d]/90 border border-[#20293d] px-2.5 py-1 rounded-lg text-xs font-mono text-zinc-300 flex items-center gap-1.5">
+                  <Atom className="w-3.5 h-3.5 text-cyan-400" />
+                  <span>React</span>
+                </span>
+                <span className="bg-[#0e131d]/90 border border-[#20293d] px-2.5 py-1 rounded-lg text-xs font-mono text-zinc-300 flex items-center gap-1.5">
+                  <span className="text-zinc-400 font-bold text-[10px]">ex</span>
+                  <span>Express.js</span>
+                </span>
+                <span className="bg-[#0e131d]/90 border border-[#20293d] px-2.5 py-1 rounded-lg text-xs font-mono text-zinc-300 flex items-center gap-1.5">
+                  <span className="bg-blue-600/80 text-[9px] font-bold px-1 rounded-xs text-white">
+                    TS
+                  </span>
+                  <span>TypeScript</span>
+                </span>
+                <span className="bg-[#0e131d]/90 border border-[#20293d] px-2.5 py-1 rounded-lg text-xs font-mono text-zinc-300 flex items-center gap-1.5">
+                  <Database className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>MongoDB</span>
+                </span>
+              </div>
+            </div>
+
+            {/* Quote Block */}
+            <div className="border-l-2 border-emerald-500/40 pl-3 py-0.5 font-mono text-xs text-zinc-400 italic">
+              <p>&ldquo;Turn ideas into working systems.&rdquo;</p>
+              <p className="text-zinc-500 not-italic text-[11px]">— Utshob Bose</p>
             </div>
           </div>
 
-          {/* Recruiter Challenge Panel */}
-          <div className="xl:col-span-5 w-full max-w-xl mx-auto flex flex-col items-center">
+          {/* Right Column: Recruiter Challenge Terminal Window */}
+          <div className="lg:col-span-6 xl:col-span-6 flex justify-center lg:justify-end w-full">
             <DebugChallenge />
           </div>
         </div>
+      </div>
 
-        {/* Scroll Indicator */}
-        <div className="pt-10">
-          <button
-            onClick={() => scrollTo("experience")}
-            className="group flex flex-col items-center gap-1.5 text-zinc-400 hover:text-emerald-400 transition-colors cursor-pointer"
-            aria-label="Scroll to experience"
-          >
-            <span className="font-pixel text-[9px] uppercase tracking-widest text-zinc-500 group-hover:text-emerald-400">
-              Scroll Down
-            </span>
-            <div className="p-1.5 bg-[#0e121e] border border-[#20273a] group-hover:border-emerald-500/60 shadow-[2px_2px_0px_#000]">
-              <ArrowDown className="w-3.5 h-3.5 animate-bounce" />
-            </div>
-          </button>
+      {/* Bottom Exploration & Terminal Status Line */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto pt-6 flex flex-col items-center space-y-4 select-none">
+        {/* Scroll to explore */}
+        <button
+          onClick={() => scrollTo("experience")}
+          className="group flex flex-col items-center gap-1 text-zinc-400 hover:text-emerald-400 transition-colors cursor-pointer"
+          aria-label="Scroll to experience"
+        >
+          <span className="font-mono text-xs text-zinc-400 group-hover:text-emerald-400">
+            Scroll to explore
+          </span>
+          <div className="w-5 h-8 rounded-full border border-zinc-600 group-hover:border-emerald-500/70 flex items-start justify-center p-1 transition-colors">
+            <span className="w-1 h-2 bg-zinc-400 group-hover:bg-emerald-400 rounded-full animate-bounce" />
+          </div>
+          <ArrowDown className="w-3.5 h-3.5 text-zinc-500 group-hover:text-emerald-400 animate-bounce -mt-1" />
+        </button>
+
+        {/* Status Line */}
+        <div className="w-full border-t border-zinc-800/40 pt-3 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-zinc-500 gap-2">
+          <div>
+            Terminal v2026 <span className="text-zinc-700">|</span> Utshob Bose{" "}
+            <span className="text-zinc-700">|</span> Full-Stack Developer{" "}
+            <span className="text-zinc-700">{"///////////////"}</span>
+          </div>
+          <div>Build something people love.</div>
         </div>
       </div>
     </section>
