@@ -30,7 +30,7 @@ export const profile: Profile = {
     "Computer Science graduate specializing in full-stack web development, system design, and software engineering. Proficient in building scalable applications with Next.js, React.js, Express.js, and the MERN stack. Experienced in database management, agile methodologies, REST API design, WordPress/cPanel administration, and technical documentation (ERDs, DFDs, UML diagrams).",
   location: "Dhaka, Bangladesh",
   email: "officialutshob@gmail.com",
-  resumeUrl: "/resume.pdf",
+  resumeUrl: "/Resume_Portfolio.pdf",
   socials: {
     github: "https://github.com/utshobbose",
     linkedin: "https://www.linkedin.com/in/utshob-bose-135812373/",
