@@ -63,7 +63,7 @@ export const projects: ProjectItem[] = [
       "Groq AI API",
       "OpenStreetMap API",
     ],
-    liveUrl: "https://fittrack-live.vercel.app",
+    liveUrl: "https://fit-track-iota-seven.vercel.app/",
     githubUrl: "https://github.com/utshobbose/FitTrack",
   },
   {
@@ -106,7 +106,7 @@ export const projects: ProjectItem[] = [
       "Designed immersive UI/UX with eerie thematic micro-interactions, custom typography, smooth transitions, and responsive reading views.",
     ],
     tech: ["React", "React Router", "Tailwind CSS", "Custom Fonts"],
-    liveUrl: "https://hollowink.vercel.app",
+    liveUrl: "https://hollow-link.vercel.app/",
     githubUrl: "https://github.com/utshobbose/HollowInk",
   },
   {
@@ -137,7 +137,7 @@ export const projects: ProjectItem[] = [
       "Engineered responsive staff dashboard for viewing mechanic schedules and daily appointment pipelines.",
     ],
     tech: ["Next.js", "Express.js", "REST API", "Tailwind CSS"],
-    liveUrl: "https://car-workshop.vercel.app",
+    liveUrl: "https://car-workshop-eight.vercel.app/",
     githubUrl: "https://github.com/utshobbose/Car-Workshop-Appointment_System",
   },
 ];
