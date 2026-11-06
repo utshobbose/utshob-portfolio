@@ -42,30 +42,30 @@ export const featuredVenture: ProjectItem = {
 };
 
 export const projects: ProjectItem[] = [
-  {
-    id: "fittrack",
-    processName: "fittrack.exe",
-    name: "FitTrack",
-    tagline: "AI-Powered Fitness & Wellness Management Platform",
-    year: "2025",
-    description:
-      "Comprehensive fitness management web app covering account management, BMI/calorie calculators, personalized meal planning, and water-intake tracker.",
-    highlights: [
-      "Integrated AI-powered yoga and workout routine generation using the Groq AI API for ultra-low-latency guidance.",
-      "Built a nearby-gyms locator with OpenStreetMap API and geolocation to help users find fitness centers nearby.",
-      "Engineered a progress-tracking logbook, body-measurement history charts, and an integrated supplements storefront.",
-    ],
-    tech: [
-      "React",
-      "Tailwind CSS",
-      "Express.js",
-      "MongoDB",
-      "Groq AI API",
-      "OpenStreetMap API",
-    ],
-    liveUrl: "https://fit-track-iota-seven.vercel.app/",
-    githubUrl: "https://github.com/utshobbose/FitTrack",
-  },
+  // {
+  //   id: "fittrack",
+  //   processName: "fittrack.exe",
+  //   name: "FitTrack",
+  //   tagline: "AI-Powered Fitness & Wellness Management Platform",
+  //   year: "2025",
+  //   description:
+  //     "Comprehensive fitness management web app covering account management, BMI/calorie calculators, personalized meal planning, and water-intake tracker.",
+  //   highlights: [
+  //     "Integrated AI-powered yoga and workout routine generation using the Groq AI API for ultra-low-latency guidance.",
+  //     "Built a nearby-gyms locator with OpenStreetMap API and geolocation to help users find fitness centers nearby.",
+  //     "Engineered a progress-tracking logbook, body-measurement history charts, and an integrated supplements storefront.",
+  //   ],
+  //   tech: [
+  //     "React",
+  //     "Tailwind CSS",
+  //     "Express.js",
+  //     "MongoDB",
+  //     "Groq AI API",
+  //     "OpenStreetMap API",
+  //   ],
+  //   liveUrl: "https://fit-track-iota-seven.vercel.app/",
+  //   githubUrl: "https://github.com/utshobbose/FitTrack",
+  // },
   {
     id: "smart-analyzer",
     processName: "smartanalyzer.exe",
